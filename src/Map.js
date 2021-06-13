@@ -1,37 +1,23 @@
 import React from 'react';
 import "./Map.css";
-import { Circle, LayerGroup, LayersControl, Map as leafletMap, MapContainer, TileLayer, useMap } from "react-leaflet";
+import { Circle, Map as leafletMap, MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import { showDataOnMap } from './util';
 
-function Map({ zoom, countries, casesType }) {
-
-    const center = [51.505, -0.09]
-
+function Map({ center, zoom, countries, casesType }) {
     return (
-        <div className="map">
-            <MapContainer center={center} zoom={3} scrollWheelZoom={false}>
-                <LayersControl position="topright">
-                    <LayersControl.BaseLayer checked name="OpenStreetMap.Mapnik">
-                        <TileLayer
-                            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                        />
-                    </LayersControl.BaseLayer>
-                    <LayersControl.BaseLayer name="OpenStreetMap.BlackAndWhite">
-                        <TileLayer
-                            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                            url="https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png"
-                        />
-                    </LayersControl.BaseLayer>
-                    <LayersControl.Overlay checked name="Layer group with circles">
-                        <LayerGroup>
-                            {showDataOnMap(countries, casesType)}
-                        </LayerGroup>
-                    </LayersControl.Overlay>
+        <div className="map" >
+            <MapContainer center={center} zoom={zoom}>
+                <ChangeView center={center} zoom={zoom} />
 
-                </LayersControl>
+                    <TileLayer
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    />
+
+                    {showDataOnMap(countries, casesType)}
+
             </MapContainer>
-        </div >
+        </div>
     )
 }
 
