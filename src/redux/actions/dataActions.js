@@ -1,4 +1,9 @@
-import { DATA_COUNTRIES, SELECTED_COUNTRY } from '../types';
+import {
+    DATA_COUNTRIES,
+    SELECTED_COUNTRIES,
+    DELETE_CHARACTER_SEARCH,
+    FILL_BACKUP
+} from '../types';
 import axios from "axios";
 
 
@@ -12,6 +17,15 @@ export const getCountryList = () => dispatch => {
         .catch(err => { console.log(err) });
 }
 
-export const selectedCountry = (countries) => dispatch => {
-    dispatch({ type: SELECTED_COUNTRY, payload: countries });
+
+export const deleteCharacterSearch = countries => dispatch => {
+    dispatch({ type: SELECTED_COUNTRIES, payload: countries })
+}
+
+export const fillBackUp = () => dispatch => {
+    dispatch({ type: FILL_BACKUP })
+}
+
+export const selectedCountry = countries => dispatch => {
+    dispatch({ type: SELECTED_COUNTRIES, payload: countries })
 }

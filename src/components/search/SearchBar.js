@@ -1,38 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./SearchBar.css";
 import SearchIcon from "@material-ui/icons/Search";
 import CloseIcon from "@material-ui/icons/Close";
 
-
-
 import { connect } from 'react-redux';
+import { selectedCountry, deleteCharacterSearch, fillBackUp } from '../../redux/actions/dataActions';
 
+function SearchBar({ data, selectedCountry, fillBackUp, deleteCharacterSearch }) {
 
-function SearchBar({ countries }) {
-
-  const [filteredData, setFilteredData] = useState([]);
-  const [wordEntered, setWordEntered] = useState("");
+  const [filteredData, setFilteredData] = useState([])
+  const [wordEntered, setWordEntered] = useState("")
 
   const handleFilter = (event) => {
-    const searchWord = event.target.value;
-    setWordEntered(searchWord);
-    const newFilter = countries.filter(country => {
-      return country.name.toLowerCase().includes(searchWord.toLowerCase());
+    const searchWord = event.target.value
+
+    setWordEntered(searchWord)
+    const newFilter = data.countries.filter(country => {
+      return country.name.toLowerCase().includes(searchWord.toLowerCase())
     });
 
     if (searchWord === "") {
-      setFilteredData([]);
+      setFilteredData([])
+      selectedCountry([])
     } else {
-      setFilteredData(newFilter);
-      // selectedCountry(newFilter)
-      console.log(newFilter)
+      setFilteredData(newFilter)
+      selectedCountry(newFilter)
+
     }
   };
 
   const clearInput = () => {
-    setFilteredData([]);
-    setWordEntered("");
+    setFilteredData([])
+    fillBackUp()
+    setWordEntered("")
   };
+
 
   return (
     <div className="search">
@@ -66,9 +68,11 @@ function SearchBar({ countries }) {
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    countries: state.data,
-  }
-}
-export default connect(mapStateToProps, null)(SearchBar);
+const mapStateToProps = state => ({ data: state.data })
+const mapDispatchToProps = {
+  selectedCountry,
+  deleteCharacterSearch,
+  fillBackUp,
+  deleteCharacterSearch
+};
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

@@ -13,8 +13,6 @@ export const prettyPrintStat = (stat) => {
     return `+${numeral(stat).format("0.0a")}`
 }
 
-
-
 const casesTypeColors = {
     cases: {
         hex: "red",
@@ -24,7 +22,7 @@ const casesTypeColors = {
 }
 
 
-export const showDataOnMap = (casesType, countries) => {
+export const showDataOnMap = (countries, casesType) => {
 
     return (
         countries.map(country => (
