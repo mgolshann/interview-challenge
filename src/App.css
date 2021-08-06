@@ -12,7 +12,7 @@ body {
 .app__header {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   justify-content: space-between;
   position: relative;
 }
@@ -30,31 +30,36 @@ body {
   }
 }
 
+.cardBar {
+  padding: 0px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
 .search-container{
   position:relative;
   display:  flex; 
   align-items: center;
   max-width: auto;
   background-color: gray;
-  --tw-bg-opacity: 1;
-  background-color: rgba(243, 244, 246, var(--tw-bg-opacity));	
+  background-color: rgba(243, 244, 246, 1);	
   border-width: 1px;
   border-radius: 0.25rem;
   z-index: 1000;
 }
 .search-container:hover{
-  --tw-border-opacity: 1;
-  border-color: rgba(59, 130, 246, var(--tw-border-opacity));	
-  --tw-bg-opacity: 1;
-  background-color: rgba(255, 255, 255, var(--tw-bg-opacity));	
+  border-color: rgba(59, 130, 246, 1);	
+  background-color: rgba(255, 255, 255, 1);	
 }
 
 .search-container .icon {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   padding-right: 0.75rem;
-  --tw-text-opacity: 1;
-  color: rgba(107, 114, 128, var(--tw-text-opacity));	
+  color: rgba(107, 114, 128, 1);	
 
 }
 
@@ -91,4 +96,23 @@ body {
 
 .search-container .search-list .search-item:hover {
   background-color: rgba(229, 231, 235, 1);	
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 5px
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(155, 155, 155, 0.5);
+  border-radius: 20px;
+  border: transparent
 }

@@ -12,6 +12,7 @@
     "axios": "^0.21.1",
     "chart.js": "^2.9.4",
     "leaflet": "^1.7.1",
+    "use-select": "0.0.1",
     "numeral": "^2.0.6",
     "react": "^17.0.2",
     "react-chartjs-2": "^2.11.2",
@@ -20,7 +21,7 @@
     "react-redux": "^7.2.4",
     "react-scripts": "4.0.3",
     "redux-thunk": "^2.3.0",
-    "web-vitals": "^1.1.2"
+    "react-final-form": "5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

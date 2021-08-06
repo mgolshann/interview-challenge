@@ -1,5 +1,8 @@
 import React from 'react';
 import './Table.css';
+import { prettyPrintStat } from '../../util';
+
+// Redux
 import { connect } from 'react-redux';
 
 function Table({ data }) {
@@ -9,7 +12,7 @@ function Table({ data }) {
                 data.backup.map(country => (
                     <tr key={country.name}>
                         <td>{country.name}</td>
-                        <td><strong>{country.population}</strong></td>
+                        <td><strong>{prettyPrintStat(country.population)}</strong></td>
                     </tr>
                 )
             ))}

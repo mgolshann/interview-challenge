@@ -18,9 +18,6 @@ export const getCountryList = () => dispatch => {
 }
 
 
-export const deleteCharacterSearch = countries => dispatch => {
-    dispatch({ type: SELECTED_COUNTRIES, payload: countries })
-}
 
 export const fillBackUp = () => dispatch => {
     dispatch({ type: FILL_BACKUP })
@@ -28,4 +25,8 @@ export const fillBackUp = () => dispatch => {
 
 export const selectedCountry = countries => dispatch => {
     dispatch({ type: SELECTED_COUNTRIES, payload: countries })
+}
+
+export const deleteCharacterSearch = countries => dispatch => {
+    dispatch({ type: DELETE_CHARACTER_SEARCH, payload: countries })
 }

@@ -8,8 +8,7 @@ import {
 const initialState = {
     countries: [],
     backup: [],
-    count: 0,
-    loading: false
+    count: 0
 }
 
 export const dataReducer = (state = initialState, action) => {
@@ -20,29 +19,25 @@ export const dataReducer = (state = initialState, action) => {
                 ...state,
                 countries: action.payload,
                 backup: action.payload,
-                count: action.payload.length,
-                loading: true
+                count: action.payload.length
             }
         case SELECTED_COUNTRIES:
             return {
                 ...state,
-                countries: state.backup.filter(({ name: id1 }) => action.payload.some(({ name: id2 }) => id2 === id1)),
-                count: state.backup.length,
-                loading: false
+                countries: action.payload,
+                count: action.payload.length
             }
         case DELETE_CHARACTER_SEARCH:
             return {
                 ...state,
-                countries: state.backup.filter(({ name: id1 }) => !action.payload.some(({ name: id2 }) => id2 !== id1)),
-                count: (state.backup.length - action.payload.length),
-                loading: false
+                countries: action.payload,
+                count: action.payload.length
             }
         case FILL_BACKUP:
             return {
                 ...state,
                 countries: state.backup,
-                count: state.backup.length,
-                loading: false
+                count: state.backup.length
             }
         default:
             return state;

@@ -2,8 +2,6 @@ import React from 'react';
 import numeral from 'numeral';
 import { Circle, Popup } from 'react-leaflet';
 
-
-
 export const sortData = data => {
     const sortData = [...data];
     return sortData.sort((a, b) => b.population - a.population);
@@ -13,27 +11,16 @@ export const prettyPrintStat = (stat) => {
     return `+${numeral(stat).format("0.0a")}`
 }
 
-const casesTypeColors = {
-    cases: {
-        hex: "red",
-        multiplier: 10,
-    },
-
-}
-
-
-export const showDataOnMap = (countries, casesType) => {
+export const showDataOnMap = (countries) => {
 
     return (
         countries.map(country => (
             <Circle
                 center={country.latlng}
                 fillOpacity={0.4}
-                color={casesTypeColors[casesType].hex}
-                fillColor={casesTypeColors[casesType].hex}
-                radius={
-                    Math.sqrt(country.population) * casesTypeColors[casesType].multiplier
-                }
+                color="red"
+                fillColor="red"
+                radius={Math.sqrt(country.population) * 10}
             >
                 <Popup>
                     <div className="info-container">

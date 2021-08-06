@@ -1,4 +1,4 @@
-# React Covid 19 Tracker
+# React Redux World Population
 
-This project is made up with React Material-ui Firebase
+This project is made up with React Redux Material-ui 
 
